@@ -107,11 +107,11 @@ if __name__=='__main__':
     parser = argparse.ArgumentParser(description='Apply pixel-based CTE correction and stand alone de-stripe script on specified ACS/WFC RAW full frame or sub-array image.')
     parser.add_argument('-f', '--filename',default='NONE', type=str, help='Input rootname of RAW ACS/WFC image. \
                          Default is NONE - must input image filename.')
-    parser.add_argument('--sci1_mask',default='None', type=str, help='Input filename of mask for SCI 1. \
+    parser.add_argument('--sci1_mask',default='None', type=str, help='OPTIONAL PARAMETER: Input filename of mask for SCI 1. \
                          Default is None if not using mask.')
-    parser.add_argument('--sci2_mask',default='None', type=str, help='Input filename of mask for SCI 2. \
+    parser.add_argument('--sci2_mask',default='None', type=str, help='OPTIONAL PARAMETER: Input filename of mask for SCI 2. \
                          Default is None if not using mask.')
-    parser.add_argument('-c', '--no_ctecorr',default=True, action='store_false', help='Turn cte correction off. \
+    parser.add_argument('-c', '--nocte',default=True, action='store_false', help='OPTIONAL PARAMETER: Turn cte correction off. \
                          on or off. Default to on (True).')
 
     options = parser.parse_args()
@@ -122,4 +122,4 @@ if __name__=='__main__':
         print " "        
         sys.exit()
 
-    destripe_plus(options.filename,scimask1=options.sci1_mask,scimask2=options.sci2_mask,cte_correct=options.no_ctecorr)
+    destripe_plus(options.filename,scimask1=options.sci1_mask,scimask2=options.sci2_mask,cte_correct=options.nocte)
